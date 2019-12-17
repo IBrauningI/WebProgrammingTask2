@@ -85,7 +85,6 @@ namespace WebApplication1.Controllers
                 SelectedTeams = selected_teams
             });
         }
-
         [HttpGet]
         public async Task<IActionResult> Edit()
         {
