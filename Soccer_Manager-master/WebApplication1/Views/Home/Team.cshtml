@@ -1,0 +1,115 @@
+﻿@model Team
+
+@{
+    ViewData["Title"] = "Team";
+}
+
+<div class="container">
+    <div style="float: right; margin: 2em;">
+        <a class="btn btn-default" asp-action="Index">Back to List</a>
+    </div>
+
+    <div style="display: inline-block;">
+        <div style="float: right; margin: 1em 2em;">
+            @if (Model?.Avatar != null)
+            {
+                <img style='width:180px; height:160px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(Model?.Avatar))" />
+            }
+        </div>
+        <div style="float: left;">
+            <h2>@Model.Name</h2>
+            <h4>@Model.Mail</h4>
+        </div>
+    </div>
+    <br />
+
+    <div>
+        <h4>Team</h4>
+        <hr />
+
+        <h4>Register on:</h4>
+        <table class="table table-striped" style="margin-bottom: 0px; width: 100%;">
+            <thead style="font: bold 1.2em arial, verdana">
+                <tr>
+                    <td>№</td>
+                    <td>Tournament</td>
+                    <td>Start</td>
+                    <td>End</td>
+                </tr>
+            </thead>
+            @{int i = 1;}
+            @foreach (TeamTournament t in Model.TeamTournaments)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@t.Tournament.Name</td>
+                    <td>@t.Tournament.StartDate</td>
+                    <td>@t.Tournament.EndDate</td>
+                </tr>
+                i++;
+            }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+
+        <h4>Players:</h4>
+        <table class="table table-striped" style="margin-bottom: 0px; width: 100%;">
+            <thead style="font: bold 1.2em arial, verdana">
+                <tr>
+                    <td>№</td>
+                    <td>Name</td>
+                    <td>Position</td>
+                    <td>Age</td>
+                </tr>
+            </thead>
+            @{i = 1;}
+            @foreach (Player t in Model.Players)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@t.Name @t.Surname</td>
+                    <td>@t.Position</td>
+                    <td>@t.Age_</td>
+                </tr>
+                i++;
+            }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+
+        <h4>Rewards:</h4>
+        <table class="table table-striped" style="margin-bottom: 0px; width: 100%;">
+            <thead style="font: bold 1.2em arial, verdana">
+                <tr>
+                    <td>№</td>
+                    <td>Name</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            @{i = 1;}
+            @foreach (Reward t in Model.Rewards)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@t.Name</td>
+                    <td>@t.Date</td>
+                </tr>
+                i++;
+            }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+        <br />
+    </div>
+</div>

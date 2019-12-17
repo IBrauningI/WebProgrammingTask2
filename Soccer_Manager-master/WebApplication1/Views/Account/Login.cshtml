@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.ViewModels.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="wrapper">
+    <div class="partialBlock" style="text-align: center; float: left;">
+        <img src="~/images/img-01.png" />
+    </div>
+    
+    <div class="partialBlock" style="text-align: center;">
+
+        <span class="head">
+            Member Login
+        </span>
+        <div class="login-form">
+            <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <select asp-for="UserType" class="styled-select semi-square">
+                        <option value=@UserType.Team>Team</option>
+                        <option value=@UserType.Organizer>Organizer</option>
+                    </select>
+                    <span asp-validation-for="UserType" />
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="Name" placeholder="Name" />
+                    <span asp-validation-for="Name" />
+                </div>
+                <div class="form-group">
+                    <input type="password" asp-for="Password" placeholder="Password" />
+                    <span asp-validation-for="Password" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Login" />
+                </div>
+                <div class="text-center">
+                    Or
+                </div>
+                <div class="form-group" style="width:45%; display:inline-block">
+                    <a asp-controller="Account" asp-action="RegisterTeam" class="btn btn-default">Create Team</a>
+                </div>
+                <div class="form-group" style="width:45%; display:inline-block">
+                    <a asp-controller="Account" asp-action="RegisterCup" class="btn btn-default">Create Tournament</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

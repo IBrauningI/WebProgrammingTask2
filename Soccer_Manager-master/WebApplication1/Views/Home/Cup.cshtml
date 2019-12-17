@@ -1,0 +1,62 @@
+﻿@model Tournament
+
+@{
+    ViewData["Title"] = "Cup";
+}
+
+<div class="container">
+    <h2>@Model.Name 
+    <a class="btn btn-default" style="float: right;" asp-action="Index">Back to List</a></h2>
+
+
+    <div>
+        <h4>Tournament</h4>
+        <hr />
+        <dl class="dl-horizontal" style="font-size: 1.3em; width: 30%; margin: 0; padding: 0; float: left;">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxCountTeams)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaxCountTeams)
+            </dd>
+
+        </dl>
+
+        <h4>Registered teams:</h4>
+        <table class="table table-striped" style="margin-bottom: 0px; width: 70%;">
+            <thead style="font: bold 1.2em arial, verdana">
+                <tr>
+                    <td>№</td>
+                    <td>Team</td>
+                </tr>
+            </thead>
+            @{int i = 1;}
+            @foreach (TeamTournament t in Model.TeamTournaments)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@t.Team.Name</td>
+                </tr>
+                i++;
+            }
+        </table>
+    </div>
+</div>
