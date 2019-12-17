@@ -24,26 +24,26 @@ namespace SoccerManager.Tests
         {
             Team _team = new Team();
             _team.Name = "Barcelona";
-            _team.TeamId = 1;
-            _team.Password = "barc";
-            _team.Mail = "barc@gmail.com";
+            _team.TeamId = 8;
+            _team.Password = "Barcelona_1";
+            _team.Mail = "barcelona@gmail.com";
 
             Team new_team = _team;
             new_team.Name = "New";
             new_team.Mail = "new@gmail.com";
 
             Player player = new Player();
-            player.Name = "Messi";
-            player.PlayerId = 1;
-            player.Born = new DateTime(1987, 12, 23);
-            player.Position = "Middle Attacker";
-            player.Surname = "Lionel";
-            player.TeamId = 1;
+            player.Name = "Lionel";
+            player.PlayerId = 30;
+            player.Born = new DateTime(1987, 06, 24);
+            player.Position = "RW";
+            player.Surname = "Messi";
+            player.TeamId = 8;
 
             Reward reward = new Reward();
-            reward.Name = "Reward";
-            reward.Date = "1987-01-23";
-            reward.TeamId = 1;
+            reward.Name = "Golden ball";
+            reward.Date = "2019-11-22";
+            reward.TeamId = 8;
 
             // Arrange
             var mockHighService = new Mock<IHighLevelSoccerManagerService>();
@@ -64,7 +64,7 @@ namespace SoccerManager.Tests
                 new User()
                 {
                     UserName = "Barcelona",
-                    UserId = 1
+                    UserId = 8
                 });
             TeamController controller = new TeamController(mockHighService.Object, mockLowService.Object, userManager.Object);
             controller.ControllerContext = new ControllerContext
@@ -90,13 +90,13 @@ namespace SoccerManager.Tests
         public void IndexReturnsAViewResultWithALists()
         {
             Tournament _cup = new Tournament();
-            _cup.Name = "English premier league";
-            _cup.MaxCountTeams = 18;
+            _cup.Name = "EPL";
+            _cup.MaxCountTeams = 20;
             _cup.TournamentId = 1;
-            _cup.StartDate = "01.10.2017";
-            _cup.EndDate = "08.08.2018";
-            _cup.Password = "apl";
-            _cup.Mail = "englishLeague@gmail.com";
+            _cup.StartDate = "16.08.20179";
+            _cup.EndDate = "22.05.2020";
+            _cup.Password = "English_1";
+            _cup.Mail = "epl@gmail.com";
 
             Tournament cup = _cup;
             _cup.Name = "New";
@@ -110,17 +110,17 @@ namespace SoccerManager.Tests
             _team.Mail = "barc@gmail.com";
 
             Player player = new Player();
-            player.Name = "Messi";
+            player.Name = "lionel";
             player.PlayerId = 1;
-            player.Born = new DateTime(1987, 12, 23);
-            player.Position = "Middle Attacker";
-            player.Surname = "Lionel";
-            player.TeamId = 1;
+            player.Born = new DateTime(1987, 06, 24);
+            player.Position = "RW";
+            player.Surname = "Messi";
+            player.TeamId = 8;
 
             Reward reward = new Reward();
             reward.Name = "Reward";
-            reward.Date = "1987-01-23";
-            reward.TeamId = 1;
+            reward.Date = "2019-11-22";
+            reward.TeamId = 8;
 
             _team.Players = new List<Player>() { player };
             _team.Rewards = new List<Reward>() { reward };
@@ -614,13 +614,13 @@ namespace SoccerManager.Tests
         public void RemoveCupTest()
         {
             Tournament _cup = new Tournament();
-            _cup.Name = "English premier league";
-            _cup.MaxCountTeams = 18;
+            _cup.Name = "EPL";
+            _cup.MaxCountTeams = 20;
             _cup.TournamentId = 1;
-            _cup.StartDate = "01.10.2017";
-            _cup.EndDate = "08.08.2018";
-            _cup.Password = "apl";
-            _cup.Mail = "englishLeague@gmail.com";
+            _cup.StartDate = "15.08.2019";
+            _cup.EndDate = "22.05.2020";
+            _cup.Password = "English_1";
+            _cup.Mail = "epl@gmail.com";
 
             Team _team = new Team();
             _team.Name = "Barcelona";
@@ -682,11 +682,11 @@ namespace SoccerManager.Tests
         public void RegistrToCupTest()
         {
             Tournament _cup = new Tournament();
-            _cup.Name = "English premier league";
+            _cup.Name = "EPL";
             _cup.MaxCountTeams = 18;
             _cup.TournamentId = 1;
-            _cup.StartDate = "01.10.2017";
-            _cup.EndDate = "08.08.2018";
+            _cup.StartDate = "01.10.2020";
+            _cup.EndDate = "08.08.2019";
             _cup.Password = "apl";
             _cup.Mail = "englishLeague@gmail.com";
 

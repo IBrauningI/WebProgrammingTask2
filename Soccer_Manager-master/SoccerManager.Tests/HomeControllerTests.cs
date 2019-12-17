@@ -18,111 +18,111 @@ namespace SoccerManager.Tests
         private IEnumerable<Player> GetTestPlayers()
         {
             Team barcelona = new Team("Barcelona");
-            barcelona.Password = "barcelona";
+            barcelona.Password = "Barcelona_1";
             barcelona.Mail = "barcelona@gmail.com";
             Team liverpool = new Team("Liverpool");
-            liverpool.Password = "liverpool";
+            liverpool.Password = "Liverpool_1";
             liverpool.Mail = "liverpool@gmail.com";
             Team arsenal = new Team("Arsenal");
-            arsenal.Password = "arsenal";
+            arsenal.Password = "Arsenal_1";
             arsenal.Mail = "arsenal@gmail.com";
 
-            Player messi = new Player("Lionel", "Messi", "Middle attacker") { Team = barcelona };
-            Player pique = new Player("Adam", "Pique", "Defender") { Team = barcelona };
-            Player suarez = new Player("Peter", "Suarez", "Forward") { Team = barcelona };
-            Player mane = new Player("Sadio", "Mane", "Middle attacker") { Team = liverpool };
-            Player salah = new Player("Muhamed", "Salah", "Middle attacker") { Team = liverpool };
-            Player firmino = new Player("Roberto", "Firmino", "Attacker") { Team = liverpool };
-            Player genrih = new Player("Genrih", "Mikhitarian", "Forward") { Team = arsenal };
-            Player cech = new Player("Peter", "Cech", "Goalkeeper") { Team = arsenal };
-            Player mustafi = new Player("Skodran", "Mustafi", "Defemder") { Team = arsenal };
+            Player messi = new Player("Lionel", "Messi", "RW") { Team = barcelona };
+            Player busquets = new Player("Sergio", "Busquets", "CDM") { Team = barcelona };
+            Player suarez = new Player("Luis", "Suarez", "ST") { Team = barcelona };
+            Player mane = new Player("Sadio", "Mane", "LW") { Team = liverpool };
+            Player salah = new Player("Mohamed", "Salah", "RW") { Team = liverpool };
+            Player firmino = new Player("Roberto", "Firmino", "ST") { Team = liverpool };
+            Player aubameyang = new Player("Pierre-Emerick", "Aubameyang", "ST") { Team = arsenal };
+            Player leno = new Player("Bernd", "Leno", "GK") { Team = arsenal };
+            Player bellerin = new Player("Hector", "Bellerin", "RB") { Team = arsenal };
 
-            Tournament APL = new Tournament();
-            APL.Name = "English premier league";
-            APL.MaxCountTeams = 18;
-            APL.StartDate = "01.10.2017";
-            APL.EndDate = "08.08.2018";
-            APL.Password = "apl";
-            APL.Mail = "englishLeague@gmail.com";
-            Tournament euroCup = new Tournament();
-            euroCup.Name = "EURO cup";
-            euroCup.MaxCountTeams = 30;
-            euroCup.StartDate = "02.08.2017";
-            euroCup.EndDate = "05.05.2018";
-            euroCup.Password = "eurocup";
-            euroCup.Mail = "euro_cup@gmail.com";
+            Tournament EPL = new Tournament();
+            EPL.Name = "EPL";
+            EPL.MaxCountTeams = 20;
+            EPL.StartDate = "15.08.2019";
+            EPL.EndDate = "22.05.2020";
+            EPL.Password = "English_1";
+            EPL.Mail = "englishLeague@gmail.com";
+            Tournament FACUP = new Tournament();
+            FACUP.Name = "FACUP";
+            FACUP.MaxCountTeams = 20;
+            FACUP.StartDate = "01.09.2019";
+            FACUP.EndDate = "05.03.2020";
+            FACUP.Password = "Facup_1";
+            FACUP.Mail = "facup@gmail.com";
             Tournament someCup = new Tournament();
             someCup.Name = "Some";
             someCup.MaxCountTeams = 30;
-            someCup.StartDate = "02.08.2017";
-            someCup.EndDate = "05.05.2018";
-            someCup.Password = "some";
+            someCup.StartDate = "02.08.2019";
+            someCup.EndDate = "05.05.2020";
+            someCup.Password = "Some_1";
             someCup.Mail = "some_cup@gmail.com";
 
-            APL.TeamTournaments.Add(new TeamTournament { Tournament = APL, Team = liverpool });
-            APL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = APL });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = euroCup });
+            EPL.TeamTournaments.Add(new TeamTournament { Tournament = EPL, Team = liverpool });
+            EPL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = EPL });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = FACUP });
             someCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = someCup });
 
             var players = new List<Player>
             {
-                messi, pique, suarez, mane, salah, firmino, genrih, cech, mustafi
+                messi, busquets, suarez, mane, salah, firmino, aubameyang, leno, bellerin
             };
             return players;
         }
         private IEnumerable<Team> GetTestTeams()
         {
             Team barcelona = new Team("Barcelona");
-            barcelona.Password = "barcelona";
+            barcelona.Password = "Barcelona_1";
             barcelona.Mail = "barcelona@gmail.com";
             Team liverpool = new Team("Liverpool");
-            liverpool.Password = "liverpool";
+            liverpool.Password = "Liverpool_1";
             liverpool.Mail = "liverpool@gmail.com";
             Team arsenal = new Team("Arsenal");
-            arsenal.Password = "arsenal";
+            arsenal.Password = "Arsenal_1";
             arsenal.Mail = "arsenal@gmail.com";
 
-            Player messi = new Player("Lionel", "Messi", "Middle attacker") { Team = barcelona };
-            Player pique = new Player("Adam", "Pique", "Defender") { Team = barcelona };
-            Player suarez = new Player("Peter", "Suarez", "Forward") { Team = barcelona };
-            Player mane = new Player("Sadio", "Mane", "Middle attacker") { Team = liverpool };
-            Player salah = new Player("Muhamed", "Salah", "Middle attacker") { Team = liverpool };
-            Player firmino = new Player("Roberto", "Firmino", "Attacker") { Team = liverpool };
-            Player genrih = new Player("Genrih", "Mikhitarian", "Forward") { Team = arsenal };
-            Player cech = new Player("Peter", "Cech", "Goalkeeper") { Team = arsenal };
-            Player mustafi = new Player("Skodran", "Mustafi", "Defemder") { Team = arsenal };
+            Player messi = new Player("Lionel", "Messi", "RW") { Team = barcelona };
+            Player busquets = new Player("Sergio", "Busquets", "CDM") { Team = barcelona };
+            Player suarez = new Player("Luis", "Suarez", "ST") { Team = barcelona };
+            Player mane = new Player("Sadio", "Mane", "LW") { Team = liverpool };
+            Player salah = new Player("Mohamed", "Salah", "RW") { Team = liverpool };
+            Player firmino = new Player("Roberto", "Firmino", "ST") { Team = liverpool };
+            Player aubameyang = new Player("Pierre-Emerick", "Aubameyang", "ST") { Team = arsenal };
+            Player leno = new Player("Bernd", "Leno", "GK") { Team = arsenal };
+            Player bellerin = new Player("Hector", "Bellerin", "RB") { Team = arsenal };
 
-            Tournament APL = new Tournament();
-            APL.Name = "English premier league";
-            APL.MaxCountTeams = 18;
-            APL.StartDate = "01.10.2017";
-            APL.EndDate = "08.08.2018";
-            APL.Password = "apl";
-            APL.Mail = "englishLeague@gmail.com";
-            Tournament euroCup = new Tournament();
-            euroCup.Name = "EURO cup";
-            euroCup.MaxCountTeams = 30;
-            euroCup.StartDate = "02.08.2017";
-            euroCup.EndDate = "05.05.2018";
-            euroCup.Password = "eurocup";
-            euroCup.Mail = "euro_cup@gmail.com";
+            Tournament EPL = new Tournament();
+            EPL.Name = "EPL";
+            EPL.MaxCountTeams = 20;
+            EPL.StartDate = "15.08.2019";
+            EPL.EndDate = "22.05.2020";
+            EPL.Password = "English_1";
+            EPL.Mail = "englishLeague@gmail.com";
+            Tournament FACUP = new Tournament();
+            FACUP.Name = "FACUP";
+            FACUP.MaxCountTeams = 20;
+            FACUP.StartDate = "01.09.2019";
+            FACUP.EndDate = "05.03.2020";
+            FACUP.Password = "Facup_1";
+            FACUP.Mail = "facup@gmail.com";
             Tournament someCup = new Tournament();
             someCup.Name = "Some";
             someCup.MaxCountTeams = 30;
-            someCup.StartDate = "02.08.2017";
-            someCup.EndDate = "05.05.2018";
-            someCup.Password = "some";
+            someCup.StartDate = "02.08.2019";
+            someCup.EndDate = "05.05.2020";
+            someCup.Password = "Some_1";
             someCup.Mail = "some_cup@gmail.com";
 
-            APL.TeamTournaments.Add(new TeamTournament { Tournament = APL, Team = liverpool });
-            APL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = APL });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = euroCup });
+            EPL.TeamTournaments.Add(new TeamTournament { Tournament = EPL, Team = liverpool });
+            EPL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = EPL });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = FACUP });
             someCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = someCup });
@@ -136,59 +136,59 @@ namespace SoccerManager.Tests
         private IEnumerable<Tournament> GetTestCups()
         {
             Team barcelona = new Team("Barcelona");
-            barcelona.Password = "barcelona_1";
+            barcelona.Password = "Barcelona_1";
             barcelona.Mail = "barcelona@gmail.com";
             Team liverpool = new Team("Liverpool");
-            liverpool.Password = "liverpool";
+            liverpool.Password = "Liverpool_1";
             liverpool.Mail = "liverpool@gmail.com";
             Team arsenal = new Team("Arsenal");
-            arsenal.Password = "arsenal_1";
+            arsenal.Password = "Arsenal_1";
             arsenal.Mail = "arsenal@gmail.com";
 
             Player messi = new Player("Lionel", "Messi", "RW") { Team = barcelona };
-            Player pique = new Player("Gerard", "Pique", "CB") { Team = barcelona };
+            Player busquets = new Player("Sergio", "Busquets", "CDM") { Team = barcelona };
             Player suarez = new Player("Luis", "Suarez", "ST") { Team = barcelona };
-            Player mane = new Player("Sadio", "Mane", "Middle attacker") { Team = liverpool };
-            Player salah = new Player("Muhamed", "Salah", "Middle attacker") { Team = liverpool };
-            Player firmino = new Player("Roberto", "Firmino", "Attacker") { Team = liverpool };
-            Player genrih = new Player("Genrih", "Mikhitarian", "Forward") { Team = arsenal };
-            Player cech = new Player("Peter", "Cech", "Goalkeeper") { Team = arsenal };
-            Player mustafi = new Player("Skodran", "Mustafi", "Defemder") { Team = arsenal };
+            Player mane = new Player("Sadio", "Mane", "LW") { Team = liverpool };
+            Player salah = new Player("Mohamed", "Salah", "RW") { Team = liverpool };
+            Player firmino = new Player("Roberto", "Firmino", "ST") { Team = liverpool };
+            Player aubameyang = new Player("Pierre-Emerick", "Aubameyang", "ST") { Team = arsenal };
+            Player leno = new Player("Bernd", "Leno", "GK") { Team = arsenal };
+            Player bellerin = new Player("Hector", "Bellerin", "RB") { Team = arsenal };
 
-            Tournament APL = new Tournament();
-            APL.Name = "English premier league";
-            APL.MaxCountTeams = 18;
-            APL.StartDate = "01.10.2017";
-            APL.EndDate = "08.08.2018";
-            APL.Password = "apl";
-            APL.Mail = "englishLeague@gmail.com";
-            Tournament euroCup = new Tournament();
-            euroCup.Name = "EURO cup";
-            euroCup.MaxCountTeams = 30;
-            euroCup.StartDate = "02.08.2017";
-            euroCup.EndDate = "05.05.2018";
-            euroCup.Password = "eurocup";
-            euroCup.Mail = "euro_cup@gmail.com";
+            Tournament EPL = new Tournament();
+            EPL.Name = "EPL";
+            EPL.MaxCountTeams = 20;
+            EPL.StartDate = "15.08.2019";
+            EPL.EndDate = "22.05.2020";
+            EPL.Password = "English_1";
+            EPL.Mail = "englishLeague@gmail.com";
+            Tournament FACUP = new Tournament();
+            FACUP.Name = "FACUP";
+            FACUP.MaxCountTeams = 20;
+            FACUP.StartDate = "01.09.2019";
+            FACUP.EndDate = "05.03.2020";
+            FACUP.Password = "Facup_1";
+            FACUP.Mail = "facup@gmail.com";
             Tournament someCup = new Tournament();
             someCup.Name = "Some";
             someCup.MaxCountTeams = 30;
-            someCup.StartDate = "02.08.2017";
-            someCup.EndDate = "05.05.2018";
-            someCup.Password = "some";
+            someCup.StartDate = "02.08.2019";
+            someCup.EndDate = "05.05.2020";
+            someCup.Password = "Some_1";
             someCup.Mail = "some_cup@gmail.com";
 
-            APL.TeamTournaments.Add(new TeamTournament { Tournament = APL, Team = liverpool });
-            APL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = APL });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = euroCup });
-            euroCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = euroCup });
+            EPL.TeamTournaments.Add(new TeamTournament { Tournament = EPL, Team = liverpool });
+            EPL.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = EPL });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = FACUP });
+            FACUP.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = FACUP });
             someCup.TeamTournaments.Add(new TeamTournament { Team = liverpool, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = arsenal, Tournament = someCup });
             someCup.TeamTournaments.Add(new TeamTournament { Team = barcelona, Tournament = someCup });
 
             var cups = new List<Tournament>
             {
-                APL, euroCup, someCup
+                EPL, FACUP, someCup
             };
             return cups;
         }
@@ -223,36 +223,36 @@ namespace SoccerManager.Tests
 
         private Tournament TestGetCup(int id)
         {
-            Tournament APL = new Tournament();
-            APL.TournamentId = 1;
-            APL.Name = "English premier league";
-            APL.MaxCountTeams = 18;
-            APL.StartDate = "01.10.2017";
-            APL.EndDate = "08.08.2018";
-            APL.Password = "apl";
-            APL.Mail = "englishLeague@gmail.com";
-            Tournament euroCup = new Tournament();
-            euroCup.TournamentId = 2;
-            euroCup.Name = "EURO cup";
-            euroCup.MaxCountTeams = 30;
-            euroCup.StartDate = "02.08.2017";
-            euroCup.EndDate = "05.05.2018";
-            euroCup.Password = "eurocup";
-            euroCup.Mail = "euro_cup@gmail.com";
+            Tournament EPL = new Tournament();
+            EPL.TournamentId = 1;
+            EPL.Name = "EPL";
+            EPL.MaxCountTeams = 20;
+            EPL.StartDate = "15.08.2019";
+            EPL.EndDate = "22.05.2020";
+            EPL.Password = "English_1";
+            EPL.Mail = "englishLeague@gmail.com";
+            Tournament FACUP = new Tournament();
+            FACUP.TournamentId = 2;
+            FACUP.Name = "FACUP";
+            FACUP.MaxCountTeams = 20;
+            FACUP.StartDate = "01.09.2019";
+            FACUP.EndDate = "05.03.2020";
+            FACUP.Password = "Facup_1";
+            FACUP.Mail = "facup@gmail.com";
             Tournament someCup = new Tournament();
             someCup.TournamentId = 3;
             someCup.Name = "Some";
             someCup.MaxCountTeams = 30;
-            someCup.StartDate = "02.08.2017";
-            someCup.EndDate = "05.05.2018";
+            someCup.StartDate = "02.08.2019";
+            someCup.EndDate = "05.05.2020";
             someCup.Password = "some";
             someCup.Mail = "some_cup@gmail.com";
 
 
             switch (id)
             {
-                case 1: return APL;
-                case 2: return euroCup;
+                case 1: return EPL;
+                case 2: return FACUP;
                 case 3: return someCup;
                 default: return null;
             }
