@@ -1,0 +1,197 @@
+﻿@model OrganaizerMainInfo
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.ShowConfirming == true)
+{
+    <div class="background-field"></div>
+
+    <div class="middleWindow round-border">
+        <h1 class="text-center">Are you sure!</h1>
+        <div style="width: 100%;  text-align: center;">
+            <a asp-action="Delete"
+               class="btn btn-default glyphicon glyphicon-ok-circle"> </a>
+            
+            <a asp-action="Index" asp-controller="Organizer"
+               class="btn btn-default glyphicon glyphicon-remove-circle"> </a>
+        </div>
+    </div>
+}
+
+<div class="wrapper" style="margin-left: 0px;">
+
+    @if (@Model.Tournament != null)
+    {
+        <div class="tab">
+            @if (TempData["message"] != null)
+            {
+                <div style="margin-left: 30px;" class="alert alert-success">@TempData["message"]</div>
+            }
+
+            <button class="tablinks" onclick="openCity(event, 'general_info')" 
+                    @(Model.TabName != "teams" ? "id=defaultOpen" : "style=border:0px")>General info</button>
+            <button class="tablinks" onclick="openCity(event, 'teams')"
+                    @(Model.TabName == "teams" ? "id=defaultOpen" : "style=border:0px")>Teams</button>
+            
+            <a class="btn btn-default" style="float: right; margin: .5em;" asp-action="Logout" asp-controller="Account">Log Out</a>
+        </div>
+
+        <div class="tabcontent" id="general_info" style="width: 100%;">
+            <header>
+                <h2 style="display: inline;">Your cup: @Model.Tournament.Name</h2>
+
+                <div class="buttonBlock">
+                    <a asp-action="Edit" asp-controller="Organizer"
+                       style="position: inherit;" class="btn btn-default glyphicon glyphicon-wrench"></a>
+                    <a asp-action="Confirm" asp-controller="Organizer"
+                       class="btn btn-default glyphicon glyphicon-trash"></a>
+                </div>
+            </header>
+
+            <ul>
+                <li>Mail: @Model?.Tournament.Mail</li>
+                <li>Count of teams: @Model?.Tournament.MaxCountTeams</li>
+                <li>Start date: @Model?.Tournament.StartDate</li>
+                <li>End date: @Model?.Tournament.EndDate</li>
+            </ul>
+
+            <div style="display:inline-block; margin-right: 2em; margin-top: -6em; float: right;">
+                <form asp-action="SelectDate">
+                    <input name="id" type="hidden" value="@Model.SelectedTeam?.TeamId" />
+                    <select name="year"  class="styled-select semi-square">
+                        <option value="all">All</option>
+                        @foreach (var item in Model.Teams)
+                        {
+                            <option value="@item.DataCreation.Year">@item.DataCreation.Year</option>
+                        }
+                    </select>
+                    <input type="submit" class="btn btn-default" value="Select" />
+                </form>
+            </div>
+            <div style="padding: 1em;">
+                <h2>Current team</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mail</th>
+                        <th>Creation</th>
+                        <th>Sent Mail</th>
+                    </tr>
+                    @foreach (var item in Model.SelectedTeams)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Mail</td>
+                            <td>@item.DataCreation.ToShortDateString()</td>
+                            <td id="mailButton_@item.Name" style="width: 30%;"><button class="btn btn-default" onclick="showEmailInput('@item.Name')">Sent</button></td>
+                            <td id="@item.Name" class="text-center" style="display: none;"><form asp-action="SendEmailAsync">
+                                    <input type="hidden" name="email" value="@item.Mail" />
+                                    <input type="hidden" name="subject" value="@item.Name Cup" />
+                                    <textarea rows="4" cols="30" name="message">Common Let`s join us!!!</textarea><br />
+                                    <button class="btn btn-default" type="submit">Sent</button>
+                                    <button class="btn btn-default" type="reset" onclick="hideEmailInput('@item.Name')">Cancel</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="tabcontent" id="teams">
+
+            <div style="width: 47%;margin: .5em; margin-right: 2.5em; display: inline-block; vertical-align:top;">
+
+                <header>
+                    Current registered team
+                </header>
+
+                <table class="table table-striped" style="width: 100%;">
+                    <thead style="font: bold 1.2em arial, verdana">
+                    <tr>
+                        <td>№</td>
+                        <td>Name</td>
+                        <td>Mail</td>
+                        <td>Remove</td>
+                    </tr>
+                    </thead>
+                    @{int i = 1;}
+                    @foreach (Team item in Model?.Tournament.TeamTournaments.Select(sc => sc.Team).ToList())
+                    {
+                        <tr>
+                            <td>
+                                @i
+                            </td>
+                            <td>
+                                <a asp-action="Index" asp-controller="Organizer" asp-route-id="@item.TeamId" asp-route-tabName="teams">@item.Name</a>
+                            </td>
+                            <td>
+                                @item.Mail
+                            </td>
+                            <td>
+                                <a asp-action="RemoveTeam" asp-controller="Organizer" asp-route-TeamId="@item.TeamId"
+                                   class="btn btn-default glyphicon glyphicon-remove"></a>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </table>
+            </div>
+
+            <div style="width: 47%; margin: .5em; display: inline-block; vertical-align:top;">
+
+                <header>
+                    Current registered team
+                </header>
+                @if (Model.SelectedTeam != null)
+                {
+                    <table class="table table-striped" style="width: 100%;">
+                        <thead style="font: bold 1.2em arial, verdana">
+                        <tr>
+                            <td>Position</td>
+                            <td>Name</td>
+                            <td>Age</td>
+                        </tr>
+                        </thead>
+                        @foreach (Player item in Model?.SelectedTeam.Players)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Position
+                                </td>
+                                <td>
+                                    @item.Name @item.Surname
+                                </td>
+                                <td>
+                                    @item.Age_
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <h2 class="text-center">Select Team</h2>
+                }
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="infoBlock" style="width: 30%; margin-left: 35%;">
+            <h1>At first you must login: </h1>
+        </div>
+
+    }
+
+
+</div>
+
+
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

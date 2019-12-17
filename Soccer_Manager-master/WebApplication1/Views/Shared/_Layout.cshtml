@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="/lib/bootstrap/dist/**/*.min.css" />
+    <link rel="stylesheet" asp-href-include="/css/styles.css" />
+    <script src="~/js/site.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="@Url.Content("~/css/loginStyles.css")" rel="stylesheet" type="text/css" />
+    <title>SoccerManager</title>
+
+</head>
+<body>
+    <header>
+        SOCCER MANAGER
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div style="float: right; margin-left: 1em;"><a class="btn btn-default" asp-action="Login" asp-controller="Account">Login</a></div>
+        }
+    </header>
+    <nav>
+        @await Component.InvokeAsync("NavigationMenu")
+    </nav>
+    <div style="margin-left: 12%;">
+        @RenderBody()
+    </div>
+</body>
+</html>
